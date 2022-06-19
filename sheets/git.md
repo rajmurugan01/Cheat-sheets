@@ -29,6 +29,11 @@ Git Cheat Sheet English
 * [Git Flow](#git-flow)
 
 
+# A cheat sheet for Git workflows
+
+![Git Cheat Sheet](https://raw.githubusercontent.com/hbons/git-cheat-sheet/master/preview.png)
+
+
 <hr>
 
 ## Setup
