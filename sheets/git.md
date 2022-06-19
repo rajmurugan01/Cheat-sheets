@@ -875,3 +875,101 @@ Pull all submodules of the current repository (as they will not automatically re
 ```bash
 git submodule update --init --recursive
 ```
+Some useful aliases include:
+
+| Alias | Command | What to Type |
+| --- | --- | --- |
+| `git cm` | `git commit` | `git config --global alias.cm commit` |
+| `git co` | `git checkout` | `git config --global alias.co checkout` |
+| `git ac` | `git add . -A` `git commit` | `git config --global alias.ac '!git add -A && git commit'` |
+| `git st` | `git status -sb` | `git config --global alias.st 'status -sb'` |
+| `git tags` | `git tag -l` | `git config --global alias.tags 'tag -l'` |
+| `git branches` | `git branch -a` | `git config --global alias.branches 'branch -a'` |
+| `git cleanup` | `git branch --merged \| grep -v '*' \| xargs git branch -d` | `git config --global alias.cleanup "!git branch --merged \| grep -v '*' \| xargs git branch -d"` |
+| `git remotes` | `git remote -v` | `git config --global alias.remotes 'remote -v'` |
+| `git lg` | `git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --` | `git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"` |
+
+*Some Aliases are taken from [@mathiasbynens](https://github.com/mathiasbynens) dotfiles: https://github.com/mathiasbynens/dotfiles/blob/master/.gitconfig*
+
+#### Auto-Correct
+Git gives suggestions for misspelled commands and if auto-correct is enabled the command can be fixed and executed automatically. Auto-correct is enabled by specifying an integer which is the delay in tenths of a second before git will run the corrected command. Zero is the default value where no correcting will take place, and a negative value will run the corrected command with no delay.
+
+For example, if you type `git comit` you will get this:
+
+```bash
+$ git comit -m "Message"
+# git: 'comit' is not a git command. See 'git --help'.
+
+# Did you mean this?
+#   commit
+```
+
+Auto-correct can be enabled like this (with a 1.5 second delay):
+
+```bash
+$ git config --global help.autocorrect 15
+```
+
+So now the command `git comit` will be auto-corrected to `git commit` like this:
+
+```bash
+$ git comit -m "Message"
+# WARNING: You called a Git command named 'comit', which does not exist.
+# Continuing under the assumption that you meant 'commit'
+# in 1.5 seconds automatically...
+```
+
+The delay before git will rerun the command is so the user has time to abort.
+
+#### Color
+To add more color to your Git output:
+
+```bash
+$ git config --global color.ui 1
+```
+
+[*Read more about the Git `config` command.*](http://git-scm.com/docs/git-config)
+
+### Git Resources
+| Title | Link |
+| ----- | ---- |
+| Official Git Site | http://git-scm.com/ |
+| Official Git Video Tutorials | http://git-scm.com/videos |
+| Code School Try Git | http://try.github.com/ |
+| Introductory Reference & Tutorial for Git | http://gitref.org/ |
+| Official Git Tutorial | http://git-scm.com/docs/gittutorial |
+| Everyday Git | http://git-scm.com/docs/everyday |
+| Git Immersion | http://gitimmersion.com/ |
+| Git God | https://github.com/gorosgobe/git-god |
+| Git for Computer Scientists | http://eagain.net/articles/git-for-computer-scientists/ |
+| Git Magic | http://www-cs-students.stanford.edu/~blynn/gitmagic/ |
+| Git Visualization Playground | http://onlywei.github.io/explain-git-with-d3/#freeplay |
+| Learn Git Branching | http://pcottle.github.io/learnGitBranching/ |
+| A collection of useful .gitignore templates | https://github.com/github/gitignore |
+| Unixorn's git-extra-commands collection of git scripts | https://github.com/unixorn/git-extra-commands |
+
+#### Git Books
+| Title | Link |
+| ----- | ---- |
+| Pragmatic Version Control Using Git | https://pragprog.com/titles/tsgit/pragmatic-version-control-using-git |
+| Pro Git | http://git-scm.com/book |
+| Git Internals PluralSight | https://github.com/pluralsight/git-internals-pdf |
+| Git in the Trenches | http://cbx33.github.io/gitt/ |
+| Version Control with Git | http://www.amazon.com/Version-Control-Git-collaborative-development/dp/1449316387 |
+| Pragmatic Guide to Git | https://pragprog.com/titles/pg_git/pragmatic-guide-to-git |
+| Git: Version Control for Everyone | https://www.packtpub.com/application-development/git-version-control-everyone |
+
+#### Git Videos
+| Title | Link |
+| ----- | ---- |
+| Linus Torvalds on Git | https://www.youtube.com/watch?v=4XpnKHJAok8 |
+| Introduction to Git with Scott Chacon | https://www.youtube.com/watch?v=ZDR433b0HJY |
+| Git From the Bits Up | https://www.youtube.com/watch?v=MYP56QJpDr4 |
+| Graphs, Hashes, and Compression, Oh My! | https://www.youtube.com/watch?v=ig5E8CcdM9g |
+| GitHub Training & Guides | https://www.youtube.com/watch?list=PLg7s6cbtAD15G8lNyoaYDuKZSKyJrgwB-&v=FyfwLX4HAxM |
+
+#### Git Articles
+| Title | Link |
+| ----- | ---- |
+| GitHub Flow  | http://scottchacon.com/2011/08/31/github-flow.html |
+| Migrating to Git Large File Storate (Git LFS) | http://vooban.com/en/tips-articles-geek-stuff/migrating-to-git-lfs-for-developing-deep-learning-applications-with-large-files/ |
